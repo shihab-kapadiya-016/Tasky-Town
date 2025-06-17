@@ -1,2 +1,9 @@
-Backend/.env
-Backend/node_modules
+# Ignore node_modules in both frontend and backend
+**/node_modules/
+
+# Ignore all .env files anywhere
+**/.env
+
+# Optional: macOS/VSCode clutter
+.DS_Store
+.vscode/
