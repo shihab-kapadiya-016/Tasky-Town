@@ -34,7 +34,7 @@ const Todos = () => {
             ...todos,
             {
             title: task,
-            completed: false,
+            isCompleted: false,
             priority: priority,
             },
         ]);
@@ -65,7 +65,7 @@ const Todos = () => {
         }
 
         const newTodos = [...todos];
-        newTodos[index].completed = !newTodos[index].completed;
+        newTodos[index].isCompleted = !newTodos[index].isCompleted;
         setTodos(newTodos);
     };
 
@@ -92,6 +92,7 @@ const Todos = () => {
 
         try {
             api.patch(`/todo/update-title/${todos[index]._id}`, {title: editTask})
+            api.patch(`/todo/update-priority/${todos[index]._id}`, {priority: editPriority})
             
         } catch (error) {
             console.error(error.message)
@@ -166,7 +167,7 @@ const Todos = () => {
                 <li
                 key={index}
                 className={`flex justify-between items-center bg-gray-100 px-4 py-2 rounded-xl shadow ${
-                    todo.completed ? "line-through text-gray-400" : ""
+                    todo.isCompleted ? "line-through text-gray-400" : ""
                 }`}
                 >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 w-full">
@@ -177,20 +178,21 @@ const Todos = () => {
                         value={editTask}
                         onChange={(e) => setEditTask(e.target.value)}
                         onKeyDown={(e) => handleKeyPress(e, index)}
-                        onBlur={() => saveEdit(index)}
                         autoFocus
                         className="border-b w-full sm:w-auto outline-none text-black font-medium bg-transparent"
                     />
                     <select
                         value={editPriority}
                         onChange={(e) => setEditPriority(e.target.value)}
-                        onBlur={() => saveEdit(index)}
                         className="border rounded px-2 py-1"
                     >
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
                     </select>
+                    <button  className="bg-orange-500 hover:bg-orange-600 text-white px-3 py-1 rounded-xl shadow-sm font-semibold transition duration-150" onClick={() => saveEdit(index) }>
+                        Save
+                    </button>
                     </>
                     ) : (
                     <>
