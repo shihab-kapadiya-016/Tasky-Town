@@ -11,7 +11,6 @@ export function Logout(props) {
         ;(async () => {
             try {
                 const response = await api.post('/users/logout', {withCredentials:true})
-                console.log(response)
                 setIsLoggedOut(true)
                 setTimeout(() => {
                     window.location.reload();

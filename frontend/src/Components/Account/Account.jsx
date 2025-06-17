@@ -20,11 +20,8 @@ const Account = () => {
         ;(async () => {
             try {
                 const response = await api.get('/users/User')
-                console.log(response.data)
                 setUser(response.data.data)
-                console.log(response.data.data.profilePicture)
                 
-
             } catch (error) {
                 console.log(error.response)
             }

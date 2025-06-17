@@ -44,7 +44,6 @@ const Todos = () => {
                 title: task, 
                 priority: priority,
             })
-        console.log(response)
         setTask("");
         setPriority("medium");
     }
@@ -55,8 +54,6 @@ const Todos = () => {
 
 
     const toggleComplete = async (index) => {
-
-        console.log(todos[index])
 
         try {
             await api.patch(`/todo/toggle-complete/${todos[index]._id}`)
@@ -71,8 +68,6 @@ const Todos = () => {
 
     const deleteTodo = async (index) => {
 
-        // console.log(todos[index])
-        // console.log(todos[index]._id)
 
         try {
             const response = await api.delete(`/todo/delete-todo/${todos[index]._id}`)

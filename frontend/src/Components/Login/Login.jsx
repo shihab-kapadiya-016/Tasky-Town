@@ -30,8 +30,6 @@ const Login = () => {
             const response = await api.post("/users/login", {
                 email , password
             })
-
-            console.log("Logged in successfully", response.data)
             setPassword("")
             setEmail("")
             setLoggedIn(true)

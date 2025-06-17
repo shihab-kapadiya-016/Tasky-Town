@@ -35,8 +35,7 @@ const Register = () => {
             }
     
             const response = await axios.post("/users/register", formData)
-    
-            console.log("Registeration successful", response.data)
+
             setRegistered(true)
             setUsername("")
             setEmail("")
